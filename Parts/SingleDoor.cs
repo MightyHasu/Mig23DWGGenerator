@@ -20,9 +20,10 @@ namespace Mig23DWGGenerator.Parts
             if (isLeft)
             {
                 _name = PRE_FIX_LEFT_DOOR + " " + "W"+_width.ToString();
-            }
-
-            _name = PRE_FIX_RIGHT_DOOR + " " + "W" + _width.ToString();
+            } else
+            {
+                _name = PRE_FIX_RIGHT_DOOR + " " + "W" + _width.ToString();
+            }            
         }
 
         public override string GetName()

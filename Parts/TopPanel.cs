@@ -5,7 +5,7 @@
     {
         private const string PRE_TOP_OPENED_OPENED_BACK = "TO";
         private const string PRE_TOP_CLOSED_OPENED_BACK = "TZ";
-        private const string PRE_TOP_CLOSED_CLOSED_BACK = "TZSK";
+        private const string PRE_TOP_CLOSED_CLOSED_BACK = "TZT";
         private string _name;
         private int _width;
         private int _depth;

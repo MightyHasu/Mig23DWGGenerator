@@ -47,7 +47,7 @@ namespace Mig23DWGGenerator
             this.RoofType = new System.Windows.Forms.ComboBox();
             this.boardName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.buttonBack = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonCreateOrder = new System.Windows.Forms.Button();
             this.listBoards = new System.Windows.Forms.ListBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -249,15 +249,15 @@ namespace Mig23DWGGenerator
             this.label7.TabIndex = 20;
             this.label7.Text = "НАИМЕНОВАНИЕ НА ТАБЛОТО";
             // 
-            // buttonBack
+            // buttonDelete
             // 
-            this.buttonBack.Location = new System.Drawing.Point(11, 536);
-            this.buttonBack.Name = "buttonBack";
-            this.buttonBack.Size = new System.Drawing.Size(62, 23);
-            this.buttonBack.TabIndex = 23;
-            this.buttonBack.Text = "НАЗАД";
-            this.buttonBack.UseVisualStyleBackColor = true;
-            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
+            this.buttonDelete.Location = new System.Drawing.Point(11, 536);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(111, 23);
+            this.buttonDelete.TabIndex = 23;
+            this.buttonDelete.Text = "ИЗТРИЙ ТАБЛО";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonCreateOrder
             // 
@@ -267,6 +267,7 @@ namespace Mig23DWGGenerator
             this.buttonCreateOrder.TabIndex = 24;
             this.buttonCreateOrder.Text = "СЪЗДАЙ ПОРЪЧКА";
             this.buttonCreateOrder.UseVisualStyleBackColor = true;
+            this.buttonCreateOrder.Click += new System.EventHandler(this.buttonCreateOrder_Click);
             // 
             // listBoards
             // 
@@ -275,6 +276,7 @@ namespace Mig23DWGGenerator
             this.listBoards.Name = "listBoards";
             this.listBoards.Size = new System.Drawing.Size(220, 173);
             this.listBoards.TabIndex = 26;
+            this.listBoards.SelectedIndexChanged += new System.EventHandler(this.listBoards_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -351,7 +353,7 @@ namespace Mig23DWGGenerator
             // 
             // buttonCreateBoard
             // 
-            this.buttonCreateBoard.Location = new System.Drawing.Point(166, 536);
+            this.buttonCreateBoard.Location = new System.Drawing.Point(194, 536);
             this.buttonCreateBoard.Name = "buttonCreateBoard";
             this.buttonCreateBoard.Size = new System.Drawing.Size(107, 23);
             this.buttonCreateBoard.TabIndex = 34;
@@ -407,7 +409,7 @@ namespace Mig23DWGGenerator
             this.Controls.Add(this.label8);
             this.Controls.Add(this.listBoards);
             this.Controls.Add(this.buttonCreateOrder);
-            this.Controls.Add(this.buttonBack);
+            this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.boardName);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -450,7 +452,7 @@ namespace Mig23DWGGenerator
         private System.Windows.Forms.TextBox boardName;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button buttonCreateOrder;
-        private System.Windows.Forms.Button buttonBack;
+        private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ListBox listBoards;
         private System.Windows.Forms.CheckBox isFixedLeft;

@@ -18,12 +18,13 @@ namespace Mig23DWGGenerator
         private FoundWidth foundWidth;
         private FoundDepth foundDepth;
         private FoundFixer foundFixer;
-        //private FoundCap foundCap;
+        private FoundCap foundCap;
         private SinglePen singlePen;
         private ModuleFixer moduleFixer;
         private FrontSidePanel frontSidePanel;
         private RearSidePanel rearSidePanel;
         private CircuitBreakerMP circuitBreakerMP;
+        private MPFixer mpFixer;
 
         public PartGenerator() { }
         
@@ -44,11 +45,12 @@ namespace Mig23DWGGenerator
             
 
             //КОЛОНА ЗАДНА ЛЯВА           
-            rearSidePanel = new RearSidePanel(height, depth, isMountedLeft, isLeftPanelOpened, isBackOpened);
+            rearSidePanel = new RearSidePanel(height, width, depth, isMountedLeft, isLeftPanelOpened, isBackOpened);
             parts.Add(rearSidePanel);
 
             //КОЛОНА ЗАДНА ДЯСНА
-            rearSidePanel = new RearSidePanel(height, depth, isMountedRight, isRightPanelOpened, isBackOpened);          
+            rearSidePanel = new RearSidePanel(height, width, depth, isMountedRight, isRightPanelOpened, isBackOpened);
+            parts.Add(rearSidePanel);
            
 
             //РАЗПЪНКА, ПЕН ЕДИНИЧНА ЗА ШИНИ, ПЛАНКА МОДУЛИ
@@ -63,13 +65,28 @@ namespace Mig23DWGGenerator
                 parts.Add(moduleFixer);
             }
 
+            //ВИНКЕЛ ЗА МОНТАЖНА ПЛОЧА ЗА ТАБЛО С ГРЪБ
+            if (!isBackOpened)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    mpFixer = new MPFixer(width);
+                    parts.Add(mpFixer);
+                }
+            }
+
             //ОСНОВА
             if (foundHeight>0)
             {
-                foundWidth = new FoundWidth(width, foundHeight);
-                foundDepth = new FoundDepth(depth, foundHeight);
-                parts.Add(foundDepth);
-                parts.Add(foundWidth);
+                for (int i = 0; i < 2; i++)
+                {
+                    foundWidth = new FoundWidth(width, foundHeight);
+                    foundDepth = new FoundDepth(depth, foundHeight);
+                    parts.Add(foundDepth);
+                    parts.Add(foundWidth);
+                }
+                foundCap = new FoundCap(depth);
+                parts.Add(foundCap);
             }
 
             //ВРАТИ
@@ -97,6 +114,10 @@ namespace Mig23DWGGenerator
             topPanel = new TopPanel(width, depth, isBackOpened, isTopOpened);
             parts.Add(topPanel);
 
+            //ДЪНО
+            botPanel = new BotPanel(width, depth, isBackOpened);
+            parts.Add(botPanel);
+
             //ПОКРИВ
             if (isSingleRoof||isLeftRoof||isRightRoof||isMiddleRoof)
             {
@@ -105,17 +126,14 @@ namespace Mig23DWGGenerator
 
                 for (int i = 0; i < 2; i++)
                 {
-                    RoofFixer roofFixer= new RoofFixer(depth);
+                    roofFixer = new RoofFixer(depth);
                     parts.Add(roofFixer);
                 }
 
                 if (!isSingleRoof)
-                {
-                    for (int i = 0; i < 2; i++)
-                    {
-                        connectingRoofPanel = new ConnectingRoofPanel(depth);
-                        parts.Add(connectingRoofPanel);
-                    }
+                {                    
+                    connectingRoofPanel = new ConnectingRoofPanel(depth);
+                    parts.Add(connectingRoofPanel);                   
                 }             
                 
             }     

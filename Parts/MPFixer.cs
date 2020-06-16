@@ -4,18 +4,18 @@ using System.Text;
 
 namespace Mig23DWGGenerator.Parts
 {
-    class DoubleDoorRight : AbstractPart
+    class MPFixer : AbstractPart
     {
-        private const string PRE_FIX_LEFT_DOOR = "VDM";
+        private const string PRE_FIX_MPF = "VMP";
         private string _name;
         private int _width;
         private int _height;
 
-        public DoubleDoorRight(int width, int height)
+        public MPFixer(int width)
         {
             _width = width;
-            _height = height;            
-            _name = PRE_FIX_LEFT_DOOR + " " + "W" + _width.ToString() + " H" + _height.ToString();
+            
+            _name = PRE_FIX_MPF + " " + "W" + _width.ToString();
         }
 
         public override string GetName()

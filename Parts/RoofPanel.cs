@@ -3,10 +3,10 @@
     class RoofPanel : AbstractPart
 
     {
-        private const string PRE_LEFT = "KL";
-        private const string PRE_RIGHT = "KD";
-        private const string PRE_MID = "KS";
-        private const string PRE_SINGLE = "KE";
+        private const string PRE_LEFT = "KL"; // КОЗИРКА ЛЯВА
+        private const string PRE_RIGHT = "KD"; // КОЗИРКА ДЯСНА
+        private const string PRE_MID = "KO"; // КОЗИРКА ОТВОРЕНА
+        private const string PRE_SINGLE = "KE"; // КОЗИРКА ЕДИНИЧНА
         private string _name;
         private int _width;
         private int _depth;
