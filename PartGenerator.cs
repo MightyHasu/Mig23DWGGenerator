@@ -1,7 +1,6 @@
 ﻿using Mig23DWGGenerator.Parts;
-using System;
 using System.Collections.Generic;
-using System.Text;
+
 
 namespace Mig23DWGGenerator
 {
@@ -25,6 +24,8 @@ namespace Mig23DWGGenerator
         private RearSidePanel rearSidePanel;
         private CircuitBreakerMP circuitBreakerMP;
         private MPFixer mpFixer;
+        private AdditionalVerticalDoorProfile additionalVerticalDoorProfile;
+        private AdditionalHorizontalDoorProfile additionalHorizontalDoorProfile;
 
         public PartGenerator() { }
         
@@ -94,6 +95,19 @@ namespace Mig23DWGGenerator
             {
                 sd = new SingleDoor(width, height, isLeftSingleDoor);
                 parts.Add(sd);
+
+                for (int i = 0; i < 3; i++)
+                {
+                    additionalHorizontalDoorProfile = new AdditionalHorizontalDoorProfile(width);
+                    parts.Add(additionalHorizontalDoorProfile);
+                }
+
+                for (int i = 0; i < 2; i++)
+                {
+                    additionalVerticalDoorProfile = new AdditionalVerticalDoorProfile(height);
+                    parts.Add(additionalVerticalDoorProfile);
+                }
+                
             } 
             else
             {
@@ -101,6 +115,20 @@ namespace Mig23DWGGenerator
                 ddr = new DoubleDoorRight(width, height);
                 parts.Add(ddl);
                 parts.Add(ddr);
+
+                for (int i = 0; i < 6; i++)
+                {
+                    additionalHorizontalDoorProfile = new AdditionalHorizontalDoorProfile(width);
+                    parts.Add(additionalHorizontalDoorProfile);
+                }
+                
+
+                for (int i = 0; i < 4; i++)
+                {
+                    additionalVerticalDoorProfile = new AdditionalVerticalDoorProfile(height);
+                    parts.Add(additionalVerticalDoorProfile);
+                }
+
             }
 
             //ПЛАНКА АПАРАТУРА ШРАК 250А

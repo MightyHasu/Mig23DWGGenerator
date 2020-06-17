@@ -114,10 +114,11 @@ namespace Mig23DWGGenerator
                 return;
             }
             //ШИРИНА
+            //TODO WHEN DOOR IS BIGGER THEN 800, DISABLE SINGLE DOORS PICKS
             try
             {
                 _width = int.Parse(width.Text);
-                widhtIndex = width.SelectedIndex;
+                widhtIndex = width.SelectedIndex;                
             }
             catch (FormatException)
             {
@@ -145,6 +146,7 @@ namespace Mig23DWGGenerator
             {
                 MessageBox.Show("Unable to parse foundation height");
             }
+
             //ТИП ВРАТА
             switch (doorType.SelectedIndex)
             {
@@ -159,6 +161,7 @@ namespace Mig23DWGGenerator
                     return;
             }
             doorIndex = doorType.SelectedIndex;
+
             //ТИП КОЗИРКА
             switch (RoofType.SelectedIndex)
             {
@@ -177,11 +180,13 @@ namespace Mig23DWGGenerator
                     return;                    
             }
             roofIndex = RoofType.SelectedIndex;
+
             //ОТОВРЕНО ОТЛЯВО
             if (isLeftPanelOpened.Checked)
             {
                 _isLeftPanelOpened = true;
             }
+
             //ОТВОРЕНО ОТДЯСНО
             if (isRightPanelOpened.Checked)
             {
